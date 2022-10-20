@@ -14,7 +14,7 @@ import java.security.Principal;
 @RequestMapping("/user")
 public class UserController {
 
-    private UserDetailService userDetailService;
+    private final UserDetailService userDetailService;
 
     @Autowired
     public UserController(UserDetailService userDetailService) {
@@ -26,6 +26,6 @@ public class UserController {
         String name = principal.getName();
         User user = userDetailService.loadUserByUsername(name).get();
         model.addAttribute("user", user);
-        return "user";
+        return "bootstrap4/user";
     }
 }
